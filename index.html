@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>active_class</title>
+
+    <style>
+        .btn {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #e5e5e5;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  /* Style the active class (and buttons on mouse-over) */
+  .active, .btn:hover {
+    background-color: #6ab600;
+    color: white;
+  }
+    </style>
+</head>
+<body>
+    
+    <div id="myDIV">
+        <button class="btn">One</button>
+        <button class="btn active">Two</button>
+        <button class="btn">Three</button>
+        <button class="btn">Four</button>
+        <button class="btn">Five</button>
+      </div>
+</body>
+
+<script>
+    var btnContainer = document.getElementById("myDIV");
+
+// Get all buttons with class="btn" inside the container
+var btns = btnContainer.getElementsByClassName("btn");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+
+    // If there's no active class
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(" active", "");
+    }  
+
+    // Add the active class to the current/clicked button
+    this.className += " active";
+  });
+}
+</script>
+</html>
